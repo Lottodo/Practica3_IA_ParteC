@@ -62,5 +62,19 @@ fun main() {
         println(fila.joinToString(" | ", prefix = "| ", postfix = " |"))
     }
 
+    // 0=TP, 1=FP, 2=FN, 3=TN
+    val TP = contarEvaluaciones(tabla).get(0).toFloat()
+    val FP = contarEvaluaciones(tabla).get(1).toFloat()
+    val FN = contarEvaluaciones(tabla).get(2).toFloat()
+    val TN = contarEvaluaciones(tabla).get(3).toFloat()
+
+    val presicion = (TP/(TP+FP))
+    val recall = (TP/(TP+FN))
+    println("\nPrecision: $presicion")
+    println("Recall: $recall")
+    println("Accuracy: ${(TP+TN)/(TP+TN+FP+FN)}")
+    println("F-Score: ${2*(presicion*recall)/(presicion+recall)}")
+    println("\nTP=${TP.toInt()} FP=${FP.toInt()} FN=${FN.toInt()} TN=${TN.toInt()} ")
+
 
 }

@@ -126,16 +126,15 @@ fun generarMatrizAdyacencia(tabla: List<String>): Array<Array<Int>> {
     return matrizAdyacencia
 }
 
+fun contarEvaluaciones(tabla: List<String>): List<Int> {
+    val valores = tabla.map { it.split(",") } //Convertirlo a lista normal
+        .map { it.subList(3,8) } //Tomar solo la prediccion y la realidad
+    //Prediccion, Realidad
 
-/*
-fun contarClase(dataSet: List<DataPoint>, nombreClase: String): Int {
-    var contador = 0
+    val tp = valores.flatten().count { it == "TP" }
+    val fp = valores.flatten().count { it == "FP" }
+    val fn = valores.flatten().count { it == "FN" }
+    val tn = valores.flatten().count { it == "TN" }
 
-    dataSet.forEach {
-        if(it.clase.equals(nombreClase))
-            contador++
-    }
-
-    return contador
+    return listOf(tp,fp,fn,tn)
 }
-*/
