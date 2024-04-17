@@ -1,0 +1,1 @@
+data class DataPoint(val x_imu: Double, val y_imu: Double, val y_fr : Double, val z_fr: Double, val clase: String)
